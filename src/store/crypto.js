@@ -30,7 +30,12 @@ export const cryptoStore = defineStore({
         return Promise.resolve();
       }
       return fetchCryptoVariants().then(({data})=> {
-        this.cryptoList = data;
+        this.cryptoList = data.map((currency)=> {
+          return {
+            ...currency,
+            logo: `https://www.cryptofonts.com/img/icons/${currency.symbol.toLowerCase()}.svg`,
+          }
+        });
       });
     },
     setCryptoListSorting(field) {

@@ -22,7 +22,13 @@
     },
     methods: {
       getPropValue(cardProp) {
-        return this.cardContent[cardProp.id]
+        const propValue = parseFloat(this.cardContent[cardProp.id]);
+        console.table(this.cardContent);
+        return {
+          'percent': this.$n(propValue/100, 'percentage'),
+          'currency': this.$n(propValue, 'currency'),
+        }[cardProp.type] || propValue
+        // return this.cardContent[cardProp.id]
       }
     },
   }

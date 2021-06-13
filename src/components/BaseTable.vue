@@ -39,7 +39,12 @@ export default {
         @click.stop="$emit('click', {row, column})"
         class=""
       >
-        {{ row[column.id] }}
+        <slot
+          :name="column.id"
+          :row="row"
+        >
+          {{ row[column.id] }}
+        </slot>
       </td>
     </tr>  
   </tbody>
@@ -55,4 +60,5 @@ tr:hover {
 tr{
   @apply bg-green-100;
 }
+
 </style>

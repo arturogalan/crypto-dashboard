@@ -1,6 +1,6 @@
 <script>
 import { cryptoStore } from '../store/crypto'
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import BaseCard from '../components/BaseCard.vue'
 
 export default {
@@ -27,25 +27,31 @@ export default {
         {
           id: 'marketCapUsd',
           title: 'market cap',
-          type: '',
+          type: 'currency',
         },
         {
           id: 'priceUsd',
           title: 'last price',
-          type: '',
+          type: 'currency',
         },
         {
           id: 'changePercent24Hr',
           title: 'change percent',
-          type: '',
+          type: 'percent',
         },        
       ],      
     }
   },
+  mounted() {
+    this.fetchCryptoList()
+  },
+  methods: {
+    ...mapActions(cryptoStore, ['fetchCryptoList']),
+  },  
   computed: {
     ...mapState(cryptoStore, ['cryptoProperties']),
     selectedCrypto() {
-      return this.cryptoProperties(this.$route.params.cryptoId)
+      return this.cryptoProperties(this.$route.params.cryptoId) || {};
     },
   },
 }
@@ -60,7 +66,13 @@ export default {
     :card-content="selectedCrypto"
   >
   <template #title>
-    {{ selectedCrypto.id }}
+    <div class="flex content-center items-center justify-center">
+      <img class="w-10 h-10 ml-2 mr-2" :src="selectedCrypto.logo" />
+      <div>
+        {{ selectedCrypto.id }}
+      </div>
+    </div>
+    <!-- {{ selectedCrypto.id }} -->
   </template>
   <template #subtitle>
     ({{ selectedCrypto.symbol }})

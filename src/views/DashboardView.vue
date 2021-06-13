@@ -12,17 +12,17 @@ export default {
     return {
       columns: [
         {
+          id: 'rank',
+          title: 'Ranking',
+        },
+        {
           id: 'name',
-          title: 'name',
+          title: 'Coin name',
         },
         {
           id: 'symbol',
-          title: 'symbol',
+          title: 'Coin symbol',
         },
-        {
-          id: 'rank',
-          title: 'rank',
-        },        
       ],
     }
   },
@@ -42,14 +42,24 @@ export default {
 </script>
 
 <template>
-  <h2>{{ sortedCryptoList.length }} cryptocurrencies listed: </h2>
+
+  <h2>{{ $t('dashboard.cypto_listed', {number: sortedCryptoList.length}) }}</h2>
   <div class="flex">
   <base-table
     :columns="columns"
     :rows="sortedCryptoList"
     class="mx-8 flex-auto mb-4"
     @click="goToRowDetail"
-  />
+  >
+    <template #name="{row}">
+      <div class="flex">
+        <img class="w-5 h-5 ml-2 mr-2" :src="row.logo" />
+        <div>
+          {{ row.name }}
+        </div>
+      </div>
+    </template>
+  </base-table>
   </div>
 </template>
 

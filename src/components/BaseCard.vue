@@ -1,4 +1,6 @@
 <script>
+  import { formatPropValue } from '../utils/formatUtils'
+
   export default {
     name: 'base-card',
     props: {
@@ -22,13 +24,11 @@
     },
     methods: {
       getPropValue(cardProp) {
-        const propValue = parseFloat(this.cardContent[cardProp.id]);
-        console.table(this.cardContent);
-        return {
-          'percent': this.$n(propValue/100, 'percentage'),
-          'currency': this.$n(propValue, 'currency'),
-        }[cardProp.type] || propValue
-        // return this.cardContent[cardProp.id]
+        return formatPropValue({
+          n: this.$n,
+          value: this.cardContent[cardProp.id],
+          type: cardProp.type,
+        })
       }
     },
   }

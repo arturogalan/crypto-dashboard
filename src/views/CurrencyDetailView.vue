@@ -26,18 +26,18 @@ export default {
       cardProperties: [
         {
           id: 'marketCapUsd',
-          title: 'market cap',
+          title: 'Market cap',
           type: 'currency',
         },
         {
           id: 'priceUsd',
-          title: 'last price',
+          title: 'Last price',
           type: 'currency',
         },
         {
           id: 'changePercent24Hr',
-          title: 'change percent',
-          type: 'percent',
+          title: 'Change percent',
+          type: 'percentage',
         },        
       ],      
     }
@@ -57,7 +57,7 @@ export default {
 }
 </script>
 <template>
-  <div class="absolute top-2 left-2">
+  <div class="w-auto text-left ml-8">
     <router-link to="/">Cryptocurrencies</router-link> &gt;
     {{ $route.params.cryptoId }}
   </div>

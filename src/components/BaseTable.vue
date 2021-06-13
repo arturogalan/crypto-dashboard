@@ -1,64 +1,83 @@
 <script>
+import { formatPropValue } from '../utils/formatUtils'
+
 export default {
   name: 'base-table',
   props: {
     columns: {
       type: Array,
-      default: ()=> [],
+      default: () => [],
     },
     rows: {
       type: Array,
-      default: ()=> [],
+      default: () => [],
+    },
+  },
+  methods: {
+    getPropValue(column, row) {
+      return formatPropValue({
+        n: this.$n,
+        value: row[column.id],
+        type: column.type,
+      })
+    },
+    getPropClass(column) {
+      return {
+        'currency': 'text-right pr-10 w-3',
+        'percentage': 'text-right w-3',
+      }[column.type] || 'text-left pl-2'
+    },
+    getHeaderPropClass(column) {
+      return {
+        'currency': 'text-right pr-10 w-3',
+      }[column.type] || 'text-left'
     }
   },
 }
 </script>
 <template>
-  <table class="table-auto border-collapse border border-green-800">
-  <thead>
-    <tr>
-      <th
-        v-for="(column, index) in columns"
-        :key="index"
-        class="border border-green-600 bg-green-400"
-      >
-        {{ column.title }}
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr
-      v-for="(row, rowIndex) in rows"
-      :key="`row-${rowIndex}`"
-      class="cursor-pointer"
+  <table class="table-auto border-collapse">
+    <thead>
+      <tr>
+        <th
+          v-for="(column, index) in columns"
+          :key="index"
+          :class="getHeaderPropClass(column)"
 
-    >
-      <td
-        v-for="(column, colIndex) in columns"
-        :key="`row-${rowIndex}-col-${colIndex}`"
-        @click.stop="$emit('click', {row, column})"
-        class=""
-      >
-        <slot
-          :name="column.id"
-          :row="row"
         >
-          {{ row[column.id] }}
-        </slot>
-      </td>
-    </tr>  
-  </tbody>
-</table>
+          {{ column.title }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="(row, rowIndex) in rows"
+        :key="`row-${rowIndex}`"
+        class="
+          hover:bg-gray-50
+          md:space-y-3
+          space-y-4
+          p-4
+          border-b border-t
+          cursor-pointer
+        "
+      >
+        <td
+          v-for="(column, colIndex) in columns"
+          :key="`row-${rowIndex}-col-${colIndex}`"
+          @click.stop="$emit('click', { row, column })"
+          class="h-16"
+          :class="getPropClass(column)"
+        >
+          <!-- A slot for the consumer to decide whether he overwrite a specific column or not-->
+          <slot :name="column.id" :row="row">
+            {{ getPropValue(column, row) }}
+          </slot>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
 </template>
 
-
-<style scoped>
-tr:hover {
-  @apply bg-green-600;
-  /* background-color:#f5f5f5; */
-}
-tr{
-  @apply bg-green-100;
-}
-
-</style>
+<style scoped></style>

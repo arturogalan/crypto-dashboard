@@ -14,15 +14,28 @@ export default {
         {
           id: 'rank',
           title: 'Ranking',
+          type: 'string',
         },
         {
           id: 'name',
           title: 'Coin name',
+          type: 'string',
         },
         {
           id: 'symbol',
           title: 'Coin symbol',
+          type: 'string',
         },
+        {
+          id: 'priceUsd',
+          title: 'Last price',
+          type: 'currency',
+        },
+        {
+          id: 'changePercent24Hr',
+          title: 'Change percent',
+          type: 'percentage',
+        },        
       ],
     }
   },
@@ -43,7 +56,7 @@ export default {
 
 <template>
 
-  <h2>{{ $t('dashboard.cypto_listed', {number: sortedCryptoList.length}) }}</h2>
+  <div class="w-auto text-left ml-8">{{ $t('dashboard.cypto_listed', {number: sortedCryptoList.length}) }}</div>
   <div class="flex">
   <base-table
     :columns="columns"
@@ -51,6 +64,7 @@ export default {
     class="mx-8 flex-auto mb-4"
     @click="goToRowDetail"
   >
+    <!-- In case of 'name' column, overwrite the column to add the logo together with the name -->
     <template #name="{row}">
       <div class="flex">
         <img class="w-5 h-5 ml-2 mr-2" :src="row.logo" />

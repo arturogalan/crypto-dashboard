@@ -1,0 +1,21 @@
+import { createRouter, createWebHistory } from 'vue-router'
+import DashboardView from '/src/views/DashboardView.vue'
+import CurrencyDetailView from '/src/views/CurrencyDetailView.vue'
+
+const routes = [
+    {
+        path: '/',
+        name: 'Dashboard',
+        component: DashboardView,
+    },
+    {
+      path: '/currencies/:cryptoId',
+      name: 'CurrencyDetail',
+      component: CurrencyDetailView,
+    }
+]
+const router = createRouter({
+    history: createWebHistory(),
+    routes,
+})
+export default router

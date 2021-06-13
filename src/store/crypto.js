@@ -3,18 +3,38 @@ import { defineStore } from 'pinia'
 import { fetchCryptoVariants } from '../services/coin-cap-api'
 
 export const cryptoStore = defineStore({
-  id: 'user',
+  id: 'crypto',
   state: () => ({
     cryptoList: [],
+    sorting: {
+      field: 'rank',
+      order: 'asc',
+    },
   }),
   getters: {
-    cryptoVariants: (state) => state.cryptoList,
+    sortedCryptoList: (state) => state.cryptoList.sort(function (a, b) {
+      const field = state.sorting.field;
+      if (isNaN(a[field])) {
+        return a[field].localeCompare(b[field]);
+      }
+      return a[field] > (b[field]);
+
+    }),
+    cryptoProperties: (state) => (id) => {
+      return state.cryptoList.find((crypto) => crypto.id === id)
+    }
   },  
   actions: {
-    fetchCryptoVariants() {
+    fetchCryptoList() {
+      if (this.cryptoList.length) {
+        return Promise.resolve();
+      }
       return fetchCryptoVariants().then(({data})=> {
         this.cryptoList = data;
       });
+    },
+    setCryptoListSorting(field) {
+      this.sorting.field = field;
     }
   },
 })

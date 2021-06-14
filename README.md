@@ -7,7 +7,7 @@ Libraries used and reasons:
 -Vue-i18n: A library that provides internationalization but also numbers and currencies formatting for each locale
 -Tailwind: Nice tool for prototyping and with a nice base set of css classes to focus on other things at this early stage of development
 -Vite: Frontend tooling to make the bundle with hot module replacement and native ES modules mechanism to serve source files. Its relatively easy to refactor this into a Webpack project when the app turns into something more professional or retro-compatible if needed.
-
+-chart.js: A MIT license javascript library to represent data in charts.
 
 ## Webapp design:
 -A couple of components have been made in order to be able to reuse them as the webapp grows:

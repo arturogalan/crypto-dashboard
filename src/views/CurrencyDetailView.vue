@@ -1,11 +1,15 @@
 <script>
 import { cryptoStore } from '../store/crypto'
+import { cryptoDetailStore } from '../store/cryptoDetail'
+
 import { mapActions, mapState } from 'pinia'
 import BaseCard from '../components/BaseCard.vue'
+import BaseChart from '../components/BaseChart.vue'
 
 export default {
   components: {
     BaseCard,
+    BaseChart,
   },
   data() {
     return {
@@ -58,13 +62,21 @@ export default {
     }
   },
   mounted() {
-    this.fetchCryptoList()
+    Promise.all([
+      this.fetchCryptoList(),
+      this.fetchCryptoHistory(this.$route.params.cryptoId),
+    ])
+    // this.fetchCryptoList().then(()=> {
+    //   this.fetchCryptoHistory(this.$route.params.cryptoId);
+    // })
   },
   methods: {
     ...mapActions(cryptoStore, ['fetchCryptoList']),
+    ...mapActions(cryptoDetailStore, ['fetchCryptoHistory']),
   },  
   computed: {
     ...mapState(cryptoStore, ['cryptoProperties']),
+    ...mapState(cryptoDetailStore, ['cryptoHistory']),
     selectedCrypto() {
       return this.cryptoProperties(this.$route.params.cryptoId) || {};
     },
@@ -87,12 +99,17 @@ export default {
         {{ selectedCrypto.id }}
       </div>
     </div>
-    <!-- {{ selectedCrypto.id }} -->
   </template>
   <template #subtitle>
     ({{ selectedCrypto.symbol }})
   </template>  
   </base-card>
+  <base-chart
+    v-if="cryptoHistory.length"
+    :graph-labels="cryptoHistory.map((point)=> $d(point.date, 'short'))"
+    :graph-data="cryptoHistory.map((point)=> point.priceUsd)"
+    class="mt-3"
+  />
 </template>
 
 <style></style>

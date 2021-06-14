@@ -1,7 +1,20 @@
 <script>
+  import ThemeSwitcher from '../components/ThemeSwitcher.vue'
+
   export default {
     name: 'base-header',
-
+    components: {
+      ThemeSwitcher
+    },
+    data() {
+      return {
+        theme: '',
+      }
+    },
+    mounted () {
+    },
+    methods: {
+    },
   }
 </script>
 <template>
@@ -16,7 +29,8 @@
     <h2 class="title-logo ml-3 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
     <span class="ml-3 text-lg whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
     </div>
-  <div class="cursor-pointer">🌒</div>
+  <!-- <div class="cursor-pointer">🌒</div> -->
+    <theme-switcher />
   </nav>
 </header>
 </template>

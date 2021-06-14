@@ -12,8 +12,7 @@
 // Check out https://github.com/vuejs/rfcs/blob/script-setup-2/active-rfcs/0000-script-setup.md
 </script>
 <template>
-<div class="flex flex-col h-screen">
-  <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
+<div class="flex flex-col h-screen bg-white dark:bg-gray-400">
   <base-header/>
   <main class="flex-1 overflow-y-auto p-5">
     <router-view/>
@@ -31,5 +30,8 @@
   text-align: center;
   color: #2c3e50;
   /* margin-top: 60px; */
+}
+root {
+  backgroun-color: var(--color-bg-default);
 }
 </style>

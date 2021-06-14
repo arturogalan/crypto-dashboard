@@ -15,9 +15,9 @@ Libraries used and reasons:
   -BaseCard: A card component to show an array of props that includes a couple of slots to allow the parent component to insert title and subtitle easily also with type inference.
 -Formatting numbers: Percentages, currencies and decimals have been rounded to 2 decimals, but this can be easily changed in the main.js file editing 'minimumFractionDigits' prop for each type if we want more/less precision
 
-#Resources
+## Resources
+bot-coin logo: Made by me with aseprite app
 Image not found ico: https://icons8.com/icon/35618/image-not-available
-
 ## Next steps:
 - The coins logos are extracted from www.cryptofonts.com directly from the site statics/assets, a more convenient way should be: To donwload the svg's and create a custom font in this project to use and not depend on their assets.
 - Maybe other parts of the webapp need to be refactored as reusable components (for example the breadcrumbs) as the app grows.

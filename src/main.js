@@ -50,37 +50,6 @@ const numberFormats = {
     },
   },
 };
-// const dateTimeFormats = {
-//   'en': {
-//     short: {
-//       year: 'numeric', month: '2-digit', day: '2-digit',
-//     },
-//     month: {
-//       year: 'numeric', month: 'short',
-//     },
-//     long: {
-//       year: 'numeric',
-//       month: 'short',
-//       day: 'numeric',
-//       weekday: 'short',
-//       hour: 'numeric',
-//       minute: 'numeric',
-//     },
-//     day: {
-//       year: 'numeric',
-//       month: 'short',
-//       day: '2-digit',
-//     },
-//     year: {
-//       year: 'numeric',
-//     },
-//   },
-//   'es': {
-//     short: {
-//       year: 'numeric', month: '2-digit', day: '2-digit',
-//     },
-//   },
-// };
 const datetimeFormats = {
   'en': {
     short: {
@@ -132,5 +101,4 @@ app.use(Vue3ChartJs, {
   ]
 })
 app.use(i18n)
-
 app.mount('#app')

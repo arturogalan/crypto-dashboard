@@ -5,6 +5,7 @@ import { cryptoDetailStore } from '../store/cryptoDetail'
 import { mapActions, mapState } from 'pinia'
 import BaseCard from '../components/BaseCard.vue'
 import BaseChart from '../components/BaseChart.vue'
+import image from '../assets/image-not-found.png'
 
 export default {
   components: {
@@ -13,6 +14,7 @@ export default {
   },
   data() {
     return {
+      isLoaded: false,
       cryptoProps: [
         'name',
         'symbol',
@@ -65,14 +67,17 @@ export default {
     Promise.all([
       this.fetchCryptoList(),
       this.fetchCryptoHistory(this.$route.params.cryptoId),
-    ])
-    // this.fetchCryptoList().then(()=> {
-    //   this.fetchCryptoHistory(this.$route.params.cryptoId);
-    // })
+    ]).then(()=> {
+      this.isLoaded = true;
+    })
   },
   methods: {
     ...mapActions(cryptoStore, ['fetchCryptoList']),
     ...mapActions(cryptoDetailStore, ['fetchCryptoHistory']),
+    replaceByDefault(e) {
+      e.target.src = image;
+      e.target.title="This currency image cannot be found"
+    }    
   },  
   computed: {
     ...mapState(cryptoStore, ['cryptoProperties']),
@@ -94,7 +99,7 @@ export default {
   >
   <template #title>
     <div class="flex content-center items-center justify-center">
-      <img class="w-10 h-10 ml-2 mr-2" :src="selectedCrypto.logo" />
+      <img class="w-10 h-10 ml-2 mr-2" :src="selectedCrypto.logo" @error="replaceByDefault"/>
       <div>
         {{ selectedCrypto.id }}
       </div>
@@ -105,9 +110,10 @@ export default {
   </template>  
   </base-card>
   <base-chart
-    v-if="cryptoHistory.length"
+    v-if="cryptoHistory.length && isLoaded"
     :graph-labels="cryptoHistory.map((point)=> $d(point.date, 'short'))"
     :graph-data="cryptoHistory.map((point)=> point.priceUsd)"
+    :graph-title="`Evolution of price of ${selectedCrypto.name} in the last month`"
     class="mt-3"
   />
 </template>

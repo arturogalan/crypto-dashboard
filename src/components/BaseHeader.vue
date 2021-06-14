@@ -12,7 +12,7 @@
       @click="$router.push({name: 'Dashboard'})"
     >
     <h2 class="title-logo ml-10 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
-    <span class="ml-3 text-lg whitespace-nowrap">Your cryptocurrencies dashboard </span>
+    <span class="ml-3 text-lg whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
     </div>
   <div class="cursor-pointer">🌒</div>
   </nav>

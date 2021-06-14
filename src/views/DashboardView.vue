@@ -15,27 +15,27 @@ export default {
       columns: [
         {
           id: 'rank',
-          title: 'Ranking',
+          title: this.$t('common_ui.currency_columns.rank'),
           type: 'string',
         },
         {
           id: 'name',
-          title: 'Coin name',
+          title: this.$t('common_ui.currency_columns.name'),
           type: 'string',
         },
         {
           id: 'symbol',
-          title: 'Coin symbol',
+          title: this.$t('common_ui.currency_columns.symbol'),
           type: 'string',
         },
         {
           id: 'priceUsd',
-          title: 'Last price',
+          title: this.$t('common_ui.currency_columns.priceUsd'),
           type: 'currency',
         },
         {
           id: 'changePercent24Hr',
-          title: 'Change percent',
+          title: this.$t('common_ui.currency_columns.changePercent24Hr'),
           type: 'percentage',
         },        
       ],
@@ -51,7 +51,7 @@ export default {
     },
     replaceByDefault(e) {
       e.target.src = image;
-      e.target.title="This currency image cannot be found"
+      e.target.title=this.$t('common_ui.image_not_found_title');
     }
   },
   computed: {

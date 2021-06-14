@@ -7,13 +7,16 @@ Libraries used and reasons:
 -Vue-i18n: A library that provides internationalization but also numbers and currencies formatting for each locale
 -Tailwind: Nice tool for prototyping and with a nice base set of css classes to focus on other things at this early stage of development
 -Vite: Frontend tooling to make the bundle with hot module replacement and native ES modules mechanism to serve source files. Its relatively easy to refactor this into a Webpack project when the app turns into something more professional or retro-compatible if needed.
-
+-chart.js: A MIT license javascript library to represent data in charts.
 
 ## Webapp design:
 -A couple of components have been made in order to be able to reuse them as the webapp grows:
   -BaseTable: A table compontent that can draw rows and columns with type formatting, col sorting and other capabilities.
   -BaseCard: A card component to show an array of props that includes a couple of slots to allow the parent component to insert title and subtitle easily also with type inference.
 -Formatting numbers: Percentages, currencies and decimals have been rounded to 2 decimals, but this can be easily changed in the main.js file editing 'minimumFractionDigits' prop for each type if we want more/less precision
+
+#Resources
+Image not found ico: https://icons8.com/icon/35618/image-not-available
 
 ## Next steps:
 - The coins logos are extracted from www.cryptofonts.com directly from the site statics/assets, a more convenient way should be: To donwload the svg's and create a custom font in this project to use and not depend on their assets.

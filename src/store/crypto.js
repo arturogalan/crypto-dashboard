@@ -40,6 +40,6 @@ export const cryptoStore = defineStore({
     },
     setCryptoListSorting(field) {
       this.sorting.field = field;
-    }
+    },
   },
 })

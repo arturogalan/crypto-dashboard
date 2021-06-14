@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
 import { pinia } from './store'
 import { createI18n } from 'vue-i18n'
+import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
+import zoomPlugin from 'chartjs-plugin-zoom'
 
 import App from './App.vue'
 import './index.css'
@@ -48,49 +50,55 @@ const numberFormats = {
     },
   },
 };
-const dateTimeFormats = {
+const datetimeFormats = {
   'en': {
     short: {
-      year: 'numeric', month: '2-digit', day: '2-digit',
-    },
-    month: {
-      year: 'numeric', month: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
     },
     long: {
       year: 'numeric',
-      month: 'short',
+      month: 'long',
       day: 'numeric',
-      weekday: 'short',
+      weekday: 'long',
+      hour: 'numeric',
+      minute: 'numeric'
+    }
+  },
+  es: {
+    short: {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    },
+    long: {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      weekday: 'long',
       hour: 'numeric',
       minute: 'numeric',
-    },
-    day: {
-      year: 'numeric',
-      month: 'short',
-      day: '2-digit',
-    },
-    year: {
-      year: 'numeric',
-    },
-  },
-  'en-ca': {
-    short: {
-      year: 'numeric', month: '2-digit', day: '2-digit',
-    },
-  },
-};
+      hour12: true
+    }
+  }
+}
 // 2. Create i18n instance with options
 const i18n = createI18n({
   locale: 'en', // set locale
   fallbackLocale: 'es', // set fallback locale
   messages, // set locale messages
+  datetimeFormats,
   numberFormats,
-  dateTimeFormats,
   // If you need to specify other options, you can set other options
   // ...
 })
 
 const app = createApp(App).use(pinia).use(router)
+app.use(Vue3ChartJs, {
+  plugins: [
+    zoomPlugin
+  ]
+})
 app.use(i18n)
-
 app.mount('#app')

@@ -3,7 +3,9 @@ import { defineProps, reactive } from 'vue'
 import { cryptoStore } from '../store/crypto'
 import { mapActions, mapState } from 'pinia'
 import BaseTable from '../components/BaseTable.vue'
+import image from '../assets/image-not-found.png'
 
+ 
 export default {
   components: {
     BaseTable,
@@ -46,6 +48,10 @@ export default {
     ...mapActions(cryptoStore, ['fetchCryptoList']),
     goToRowDetail({row, column}) {
       this.$router.push({name: 'CurrencyDetail', params: {cryptoId: row.id}});
+    },
+    replaceByDefault(e) {
+      e.target.src = image;
+      e.target.title="This currency image cannot be found"
     }
   },
   computed: {
@@ -67,7 +73,7 @@ export default {
     <!-- In case of 'name' column, overwrite the column to add the logo together with the name -->
     <template #name="{row}">
       <div class="flex">
-        <img class="w-5 h-5 ml-2 mr-2" :src="row.logo" />
+        <img class="w-5 h-5 ml-2 mr-2" :src="row.logo" @error="replaceByDefault"/>
         <div>
           {{ row.name }}
         </div>

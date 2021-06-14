@@ -13,7 +13,27 @@ import router from "./router/index"
 const messages = {
   en: {
     dashboard: {
+      breadcrumb: 'Dashboard',
       cypto_listed: '{number} cryptocurrencies listed'
+    },
+    crypto_detail: {
+      breadcrumb: '{cryptoId} detail',
+      chart_title: 'Evolution of {cryptoName} price in the last month',
+    },
+    common_ui: {
+      header_desc: 'Your cryptocurrencies dashboard !',
+      image_not_found_title: 'This cryptocurrency image cannot be found',
+      currency_columns: {
+        rank: 'Ranking',
+        name: 'Currency name',
+        symbol: 'Currency symbol',
+        priceUsd: 'Last price',
+        changePercent24Hr: 'Change % (24h)',
+        marketCapUsd: 'Market cap',
+        maxSupply: 'Max supply',
+        volumeUsd24Hr: 'Volume traded last 24h',
+        vwap24Hr: 'Volume Weighted Average Price last 24h',
+      },
     },
     message: {
       hello: 'hello world'
@@ -21,7 +41,27 @@ const messages = {
   },
   es: {
     dashboard: {
+      breadcrumb: 'Página principal',
       cypto_listed: '{number} cryptomonedas listadas'
+    },
+    crypto_detail: {
+      breadcrumb: '{cryptoId} en detalle',
+      chart_title: 'Evolución del precio de {cryptoName} en el último mes',
+    },
+    common_ui: {
+      header_desc: 'Tu panel de control de cryptomonedas !',
+      image_not_found_title: 'Esta imagen de crytomoneda no se puede mostrar',
+      currency_columns: {
+        rank: 'Ranking',
+        name: 'Nombre',
+        symbol: 'Símbolo',
+        priceUsd: 'Último precio',
+        changePercent24Hr: '% de cambio (últimas 24h)',
+        marketCapUsd: 'Capitalización de mercado',
+        maxSupply: 'Max supply',
+        volumeUsd24Hr: 'Volumen negociado últimas 24h',
+        vwap24Hr: 'Precio medio del volumen ponderado últimas 24h',
+      },      
     },
     message: {
       hello: 'hola'
@@ -49,6 +89,26 @@ const numberFormats = {
       style: 'currency', currency: 'USD', notation: 'standard'
     },
   },
+  'es': {
+    integer: {
+      style: 'decimal', useGrouping: true, minimumFractionDigits: 0, maximumFractionDigits: 0,
+    },
+    decimal: {
+      style: 'decimal', useGrouping: true, minimumFractionDigits: 2, maximumFractionDigits: 2,
+    },
+    decimalNG: {
+      style: 'decimal', useGrouping: false, minimumFractionDigits: 2, maximumFractionDigits: 2,
+    },
+    percentage: {
+      style: 'percent', useGrouping: true, minimumFractionDigits: 2 ,
+    },
+    roundedPercentage: {
+      style: 'percent', useGrouping: true, maximumFractionDigits: 0,
+    },
+    currency: {
+      style: 'currency', currency: 'USD', notation: 'standard'
+    },
+  },  
 };
 const datetimeFormats = {
   'en': {

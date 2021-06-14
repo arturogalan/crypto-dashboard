@@ -44,7 +44,7 @@ export default {
           v-for="(column, index) in columns"
           :key="index"
           :class="getHeaderClass(column)"
-
+          class="whitespace-nowrap"
         >
           {{ column.title }}
         </th>

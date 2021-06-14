@@ -32,32 +32,32 @@ export default {
       cardProperties: [
         {
           id: 'marketCapUsd',
-          title: 'Market cap',
+          title: this.$t('common_ui.currency_columns.marketCapUsd'),
           type: 'currency',
         },
         {
           id: 'priceUsd',
-          title: 'Last price',
+          title: this.$t('common_ui.currency_columns.priceUsd'),
           type: 'currency',
         },
         {
           id: 'changePercent24Hr',
-          title: 'Change percent',
+          title: this.$t('common_ui.currency_columns.changePercent24Hr'),
           type: 'percentage',
         },
         {
           id: 'maxSupply',
-          title: 'Max supply',
+          title: this.$t('common_ui.currency_columns.maxSupply'),
           type: 'integer',
         },
         {
           id: 'volumeUsd24Hr',
-          title: 'Volume traded last 24h',
+          title: this.$t('common_ui.currency_columns.volumeUsd24Hr'),
           type: 'currency',
         },
         {
           id: 'vwap24Hr',
-          title: 'Volume Weighted Average Price last 24h',
+          title: this.$t('common_ui.currency_columns.vwap24Hr'),
           type: 'currency',
         },
       ],      
@@ -76,7 +76,7 @@ export default {
     ...mapActions(cryptoDetailStore, ['fetchCryptoHistory']),
     replaceByDefault(e) {
       e.target.src = image;
-      e.target.title="This currency image cannot be found"
+      e.target.title=this.$t('common_ui.image_not_found_title');
     }    
   },  
   computed: {
@@ -90,8 +90,8 @@ export default {
 </script>
 <template>
   <div class="w-auto text-left ml-8">
-    <router-link to="/">Cryptocurrencies</router-link> &gt;
-    {{ $route.params.cryptoId }}
+    <router-link to="/">{{ $t('dashboard.breadcrumb') }}</router-link> &gt;
+    {{ $t('crypto_detail.breadcrumb', {cryptoId: $route.params.cryptoId})  }}
   </div>
   <base-card
     :card-properties="cardProperties"
@@ -113,7 +113,7 @@ export default {
     v-if="cryptoHistory.length && isLoaded"
     :graph-labels="cryptoHistory.map((point)=> $d(point.date, 'short'))"
     :graph-data="cryptoHistory.map((point)=> point.priceUsd)"
-    :graph-title="`Evolution of price of ${selectedCrypto.name} in the last month`"
+    :graph-title="$t('crypto_detail.chart_title', {cryptoName: selectedCrypto.name})"
     class="mt-3"
   />
 </template>

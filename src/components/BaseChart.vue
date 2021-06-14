@@ -2,7 +2,6 @@
 <div class="flex items-center justify-center px-4">
   <div class="max-w-4xl bg-white w-full rounded-lg shadow-xl">
   <div>
-    <button @click="updateChart">Update Chart</button>
     <vue3-chart-js
       :id="lineChart.id"
       :type="lineChart.type"

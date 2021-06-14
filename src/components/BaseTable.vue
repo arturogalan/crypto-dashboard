@@ -14,20 +14,21 @@ export default {
     },
   },
   methods: {
-    getPropValue(column, row) {
+    getColumnValue(column, row) {
       return formatPropValue({
         n: this.$n,
         value: row[column.id],
         type: column.type,
       })
     },
-    getPropClass(column) {
+    getColumnClass(column, row) {
+      const value = row[column.id];
       return {
         'currency': 'text-right pr-10 w-3',
-        'percentage': 'text-right w-3',
+        'percentage': `text-right w-3 ${value < 0 ? 'text-red-500' : 'text-blue-500'}`,
       }[column.type] || 'text-left pl-2'
     },
-    getHeaderPropClass(column) {
+    getHeaderClass(column) {
       return {
         'currency': 'text-right pr-10 w-3',
       }[column.type] || 'text-left'
@@ -42,7 +43,7 @@ export default {
         <th
           v-for="(column, index) in columns"
           :key="index"
-          :class="getHeaderPropClass(column)"
+          :class="getHeaderClass(column)"
 
         >
           {{ column.title }}
@@ -67,11 +68,11 @@ export default {
           :key="`row-${rowIndex}-col-${colIndex}`"
           @click.stop="$emit('click', { row, column })"
           class="h-16"
-          :class="getPropClass(column)"
+          :class="getColumnClass(column, row)"
         >
           <!-- A slot for the consumer to decide whether he overwrite a specific column or not-->
           <slot :name="column.id" :row="row">
-            {{ getPropValue(column, row) }}
+            {{ getColumnValue(column, row) }}
           </slot>
         </td>
       </tr>

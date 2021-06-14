@@ -5,10 +5,10 @@
     name: 'base-card',
     props: {
       /**
-       * Array of rows descriptors with fields
-       * @id (MANDATORY) unique identifier
-       * @title (MANDATORY) the path in the row to get the value of the column, can be with dots
-       * @type (MANDATORY) [profile,date,number,currency]
+       * Array of fields descriptors with this properties
+       * @id (MANDATORY) field unique identifier and name of the object prop
+       * @title (MANDATORY) the text to be shown for that field
+       * @type (MANDATORY) the type of the field-> ['percentage','currency']
       */      
       cardProperties: {
         type: Array,
@@ -23,13 +23,19 @@
       }
     },
     methods: {
-      getPropValue(cardProp) {
+      getFieldValue(cardProp, cardContent) {
         return formatPropValue({
           n: this.$n,
-          value: this.cardContent[cardProp.id],
+          value: cardContent[cardProp.id],
           type: cardProp.type,
         })
-      }
+      },
+      getFieldClass(column, row) {
+        const value = row[column.id];
+        return {
+          'percentage': `${value < 0 ? 'text-red-500' : 'text-blue-500'}`,
+        }[column.type] || ''
+      },      
     },
   }
 </script>
@@ -54,8 +60,8 @@
                 <p class="text-gray-600">
                     {{ cardProp.title }}
                 </p>
-                <p>
-                    {{ getPropValue(cardProp) }}
+                <p :class="getFieldClass(cardProp, cardContent)">
+                    {{ getFieldValue(cardProp, cardContent) }}
                 </p>
             </div>
         </div>

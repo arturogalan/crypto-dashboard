@@ -38,7 +38,22 @@ export default {
           id: 'changePercent24Hr',
           title: 'Change percent',
           type: 'percentage',
-        },        
+        },
+        {
+          id: 'maxSupply',
+          title: 'Max supply',
+          type: 'integer',
+        },
+        {
+          id: 'volumeUsd24Hr',
+          title: 'Volume traded last 24h',
+          type: 'currency',
+        },
+        {
+          id: 'vwap24Hr',
+          title: 'Volume Weighted Average Price last 24h',
+          type: 'currency',
+        },
       ],      
     }
   },

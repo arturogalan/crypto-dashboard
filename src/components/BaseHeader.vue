@@ -11,9 +11,9 @@
       class="flex items-end cursor-pointer"
       @click="$router.push({name: 'Dashboard'})"
     >
-    <img class="w-12 h-12 ml-5 rounded opacity-60" src="../assets/bot-coin.png"/>
+    <img class="w-12 h-12 ml-3 rounded opacity-60" src="../assets/bot-coin.png"/>
 
-    <h2 class="title-logo ml-2 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
+    <h2 class="title-logo ml-3 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
     <span class="ml-3 text-lg whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
     </div>
   <div class="cursor-pointer">🌒</div>

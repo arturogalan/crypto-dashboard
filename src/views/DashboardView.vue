@@ -12,8 +12,8 @@ export default {
   },
   data() {
     return {
-      columns: [
-      ],
+      columns: [],
+      searchCurrencyText: '',
     }
   },
   mounted() {
@@ -58,17 +58,43 @@ export default {
   },
   computed: {
     ...mapState(cryptoStore, ['sortedCryptoList']),
+    filteredCryptoList() {
+      return this.sortedCryptoList.filter((el)=> {
+        const isFiltering = !!this.searchCurrencyText;
+        return !isFiltering || el.name.toLowerCase().includes(this.searchCurrencyText.toLowerCase())
+      })
+    },
+    cyptoListedText() {
+      if (this.sortedCryptoList.length === this.filteredCryptoList.length) {
+        return this.$t('dashboard.cypto_listed', {number: this.sortedCryptoList.length})
+      } else {
+        return this.$t('dashboard.cypto_listed_and_filtered', {filteredNumber: this.filteredCryptoList.length, totalNumber: this.sortedCryptoList.length})
+      }
+    }
+  },
+  watch: {
   },
 }
 </script>
 
 <template>
-
-  <div class="w-auto text-left ml-8">{{ $t('dashboard.cypto_listed', {number: sortedCryptoList.length}) }}</div>
+  <div class="flex content-between justify-between mb-5">
+    <div  class="w-auto text-left ml-8">
+      {{ cyptoListedText }}
+    </div>
+    <div>
+      <input
+        type="text"
+        :placeholder="$t('dashboard.search_placeholder')"
+        v-model="searchCurrencyText"
+        class="box-border border-black"
+      >
+    </div>
+  </div>
   <div class="flex">
   <base-table
     :columns="columns"
-    :rows="sortedCryptoList"
+    :rows="filteredCryptoList"
     class="mx-8 flex-auto mb-4"
     @click="goToRowDetail"
   >

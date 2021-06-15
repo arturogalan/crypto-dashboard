@@ -14,7 +14,10 @@ const messages = {
   en: {
     dashboard: {
       breadcrumb: 'Dashboard',
-      cypto_listed: '{number} cryptocurrencies listed'
+      cypto_listed: '{number} cryptocurrencies listed',
+      cypto_listed_and_filtered: '{filteredNumber} cryptocurrencies filtered ({totalNumber} listed)',
+      search_placeholder: 'Search a currency',
+      search_text: 'Search a currency',
     },
     crypto_detail: {
       breadcrumb: '{cryptoId} detail',
@@ -42,7 +45,10 @@ const messages = {
   es: {
     dashboard: {
       breadcrumb: 'Página principal',
-      cypto_listed: '{number} cryptomonedas listadas'
+      cypto_listed: '{number} criptomonedas listadas',
+      cypto_listed_and_filtered: '{filteredNumber} criptomonedas filtradas ({totalNumber} listadas)',
+      search_placeholder: 'Buscar una criptomoneda',
+      search_text: 'Buscar una criptomoneda',
     },
     crypto_detail: {
       breadcrumb: '{cryptoId} en detalle',

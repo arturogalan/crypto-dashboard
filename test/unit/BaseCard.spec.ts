@@ -8,15 +8,22 @@ describe('BaseCard', () => {
       props: { 
         cardProperties: [
           {
-            name: 'prop1',
-            title: 'my title',
+            id: 'prop1',
+            title: 'prop-title',
             type: 'string',
           }
         ],
-        cardContent: {prop1: blabla},
-      } 
+        cardContent: {prop1: 'prop-content'},
+      },
+      global: {
+        mocks: {
+          $t: (key)=> key,
+          $n: (number)=> number,
+        }
+      }      
     })
-    const cardbody = wrapper.find('md:grid');
-    expect(cardbody.text()).toMatch(/name/);
+    expect(wrapper.text()).toContain('prop-title')
+    expect(wrapper.text()).toContain('prop-content')
+
   })
 })

@@ -13,36 +13,38 @@ export default {
   data() {
     return {
       columns: [
-        {
-          id: 'rank',
-          title: this.$t('common_ui.currency_columns.rank'),
-          type: 'string',
-        },
-        {
-          id: 'name',
-          title: this.$t('common_ui.currency_columns.name'),
-          type: 'string',
-        },
-        {
-          id: 'symbol',
-          title: this.$t('common_ui.currency_columns.symbol'),
-          type: 'string',
-        },
-        {
-          id: 'priceUsd',
-          title: this.$t('common_ui.currency_columns.priceUsd'),
-          type: 'currency',
-        },
-        {
-          id: 'changePercent24Hr',
-          title: this.$t('common_ui.currency_columns.changePercent24Hr'),
-          type: 'percentage',
-        },        
       ],
     }
   },
   mounted() {
-    this.fetchCryptoList()
+    this.fetchCryptoList();
+    this.columns = [
+      {
+        id: 'rank',
+        title: this.$t('common_ui.currency_columns.rank'),
+        type: 'string',
+      },
+      {
+        id: 'name',
+        title: this.$t('common_ui.currency_columns.name'),
+        type: 'string',
+      },
+      {
+        id: 'symbol',
+        title: this.$t('common_ui.currency_columns.symbol'),
+        type: 'string',
+      },
+      {
+        id: 'priceUsd',
+        title: this.$t('common_ui.currency_columns.priceUsd'),
+        type: 'currency',
+      },
+      {
+        id: 'changePercent24Hr',
+        title: this.$t('common_ui.currency_columns.changePercent24Hr'),
+        type: 'percentage',
+      },        
+    ];
   },
   methods: {
     ...mapActions(cryptoStore, ['fetchCryptoList']),

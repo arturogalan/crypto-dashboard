@@ -33,8 +33,12 @@ A cryptocurrencies dashboard example project, deployed in netlify:
 - Unit testing: command `npm run test:unit`. For unit testing I've choosen Vue test utils https://next.vue-test-utils.vuejs.org/ A library to easily test Vue components, and Jest as the runner for this tests. I've made an example test for BaseCard.vue, you can see that I test the existence of props, non-existen props and slots. The evolution will be to test some css classes if we want to ensure they are present, or other behaviors. For other complex components/views we can also mock the store-management methods by symply adding methods to the mocks section when mounting the wrapper in the tests. Next step will be also to connect the execution to a ci to see the coverage of the code and stablish a coverage minimum for all the app, currently you can seee the report in text format when running `npm run test:unit`
 - End-to-end testing: command `npm run test:e2e`. For e2e testing I selected Cypress, it allows you to test elements in the screen, you can search for content as a result of some endpoint call (I test the presence of 'Bitcoin' row in the cryptos table), you can test navigation (I test the navigation to a currency detail) etc... It also make an screenshot when it fails (for instance, you can simply edit the second test Bitcoin word to Batcoin an run `npm run test:e2e` to see the failure snapshot under the cypress/screenshots folder). The evolution of this e2e maybe require them to be in a separated project as they depend on the internet (api calls) and can take some time to be executed.
 ## Next steps:
+- Webpage features:
+  - If we are gointo to consume from other apis and have more currencies, we can add an infinite scroll in the page
+  - A polling to the assets endpoint can also be a nice feature to do, in order to show to the user real-time updates in the main dashboard as the crypto prices change.
 - Testing: Unit testing of each component, and extract the mocks logic into a common file to reuse it in all tests (f.e. i18n and number formatting plugins $n $t etc...).
-
-- The coins logos are extracted from www.cryptofonts.com directly from the site statics/assets, a more convenient way should be: To donwload the svg's and create a custom font in this project to use and not depend on their assets.
+- CI feature:
+  - The currencies logos are extracted from www.cryptofonts.com directly from the site statics/assets, a more convenient way should be: To donwload the svg's and create a custom font in this project to use and not depend on their assets.
+  - We can add and see purgeCSS and other tools in order to reduce the final bundle size.
 - Maybe other parts of the webapp need to be refactored as reusable components (for example the breadcrumbs) as the app grows.
-- A polling to the endpoint can also be a nice feature to do, in order to show to the user real-time updates in the main dashboard as the crypto prices change.
+

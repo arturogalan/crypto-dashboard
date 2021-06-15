@@ -15,10 +15,17 @@ Libraries used and reasons:
   -BaseCard: A card component to show an array of props that includes a couple of slots to allow the parent component to insert title and subtitle easily also with type inference.
 -Formatting numbers: Percentages, currencies and decimals have been rounded to 2 decimals, but this can be easily changed in the main.js file editing 'minimumFractionDigits' prop for each type if we want more/less precision
 
-#Resources
+## Resources
+bot-coin logo: Made by me with aseprite app
 Image not found ico: https://icons8.com/icon/35618/image-not-available
 
+## Testing
+-For unit testing I've choosen Vue test utils https://next.vue-test-utils.vuejs.org/ A library to easily test Vue components, and Jest as the runner for this tests. I've made an example test for BaseCard, I test the existence of props, non-existen props and slots. The evolution will be to test some css classes if we want to ensure they are present, or other behaviors. For other complex components/views we can also mock the store-management methods sympluy adding methods to the mocks section when mounting the wrapper in the test.
+
 ## Next steps:
+- Testing: 
+  -Unit testing of each component, and extract the mocks logic into a common file to reuse it in all tests (f.e. i18n and number formatting plugins $n $t etc...).
+
 - The coins logos are extracted from www.cryptofonts.com directly from the site statics/assets, a more convenient way should be: To donwload the svg's and create a custom font in this project to use and not depend on their assets.
 - Maybe other parts of the webapp need to be refactored as reusable components (for example the breadcrumbs) as the app grows.
 - A polling to the endpoint can also be a nice feature to do, in order to show to the user real-time updates in the main dashboard when the crypto prices change.

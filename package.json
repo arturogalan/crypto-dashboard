@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "unit-test": "jest --config=jest.unit.config.js test/unit",
+    "test": "yarn jest"
   },
   "dependencies": {
     "@j-t-mcc/vue3-chartjs": "^1.1.2",
@@ -16,17 +18,36 @@
     "vue-router": "^4.0.8"
   },
   "devDependencies": {
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "@types/jest": "^25.2.1",
     "@vitejs/plugin-vue": "^1.2.3",
     "@vue/compiler-sfc": "^3.0.5",
-    "@vue/test-utils": "^2.0.0-rc.6",
+    "@vue/test-utils": "^2.0.0-alpha.8",
     "autoprefixer": "^10.2.6",
+    "babel-jest": "^25.2.6",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.11.0",
+    "jest": "^25.2.7",
     "postcss": "^8.3.2",
     "prettier": "^2.3.1",
     "tailwindcss": "^2.1.4",
     "vite": "^2.3.7",
-    "vite-plugin-fonts": "^0.2.2"
+    "vite-plugin-fonts": "^0.2.2",
+    "vue-jest": "^5.0.0-alpha.10",
+    "vue-loader": "^16.0.0-alpha.3"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
   }
 }

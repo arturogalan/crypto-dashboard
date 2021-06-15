@@ -18,6 +18,9 @@ Libraries used and reasons:
 ## Resources
 bot-coin logo: Made by me with aseprite app
 Image not found ico: https://icons8.com/icon/35618/image-not-available
+
+## Testing
+
 ## Next steps:
 - The coins logos are extracted from www.cryptofonts.com directly from the site statics/assets, a more convenient way should be: To donwload the svg's and create a custom font in this project to use and not depend on their assets.
 - Maybe other parts of the webapp need to be refactored as reusable components (for example the breadcrumbs) as the app grows.

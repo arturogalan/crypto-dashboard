@@ -20,11 +20,12 @@ A cryptocurrencies dashboard example project, deployed in netlify:
   - To build the app in the dist directory, run `npm run build`
   
 ## Libraries used and reasons:
-- Vite: Frontend tooling to make the bundle with hot module replacement and native ES modules mechanism to serve source files. Its relatively easy to refactor this into a Webpack project when the app turns into something more professional or retro-compatible if needed.
+- Vue.js: Progressive Javascript framework with component based structure and single file components divided into html-javascript-style sections.
+- Vite: Frontend tooling to make the bundle with hot module replacement and native ES modules mechanism to serve source files. Its relatively easy to refactor this into a Webpack project when the app turns into something more professional or retro-compatible if needed, but even being Vite a recent tool it already has plugins for the most common required features.
 - Tailwind: Nice tool for prototyping and with a nice base set of css classes to focus on other things at this early stage of development
 - Axios: Instead of using native fetch I prefer to start the project directly with Axios as it has a powerful set of utilities out of the box, f.e. interceptors-> As the webapp grows we'll need to make common logic for all the API calls errors (for example show a toast with a description)
-- Pinia: state management library: A new state management library to use with Vue 3, never tested before but I thing it an interesting lib to test as it has a little less verbose api than Vuex. Provide as a single source of truth across the app views/components and the ability to caching api responses and manage all the service layer.
-- Vue-i18n: A library that provides internationalization but also numbers and currencies formatting for each locale
+- Pinia: state management library: A new state management library to use with Vue 3, never tested before but I think it's an interesting lib to test as it has a little less verbose api than Vuex (the standard state library for Vue). This library provides a single source of truth across the app views/components and the ability to caching api responses and manage all the service layer.
+- Vue-i18n: A library that provides internationalization but also numbers and currencies formatting for each installed locale. You can see in src/main.js the configuration, as it grows we can separate to JSON files all this keys and values, or even consume them from another external endpoint.
 - chart.js: A MIT license javascript library to represent data in charts.
 
 ## Webapp design description:

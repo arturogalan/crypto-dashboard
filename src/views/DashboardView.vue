@@ -94,12 +94,15 @@ export default {
     <div  class="w-auto text-left ml-8">
       {{ cyptoListedText }}
     </div>
-    <div>
+    <div
+      class="flex justify-items-center items-center"
+    >
+      <span class="text-2xl mr-2">🔎</span> 
       <input
+        class="border-2 box-border border-green-700 rounded-lg p-1"
         type="text"
         :placeholder="$t('dashboard.search_placeholder')"
         v-model="searchCurrencyText"
-        class="box-border border-black"
       >
     </div>
   </div>
@@ -115,7 +118,7 @@ export default {
     <!-- In case of 'name' column, overwrite the column to add the logo together with the name -->
     <template #name="{row}">
       <div class="flex">
-        <img class="w-5 h-5 ml-2 mr-2" :src="row.logo" @error="replaceByDefault"/>
+        <img class="w-5 h-5 ml-2 mr-2" :src="row.logo" :title="row.name" @error="replaceByDefault"/>
         <div>
           {{ row.name }}
         </div>

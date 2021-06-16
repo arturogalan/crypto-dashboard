@@ -46,6 +46,7 @@ const messages = {
         last_month: 'Last month',
         last_week: 'Last week',
         last_24h: 'Last 24 hours',
+        toggle_locale: 'Toggle locale',
       },
     },
     message: {
@@ -57,8 +58,8 @@ const messages = {
       breadcrumb: 'Página principal',
       cypto_listed: '{number} criptomonedas listadas',
       cypto_listed_and_filtered: '{filteredNumber} criptomonedas filtradas ({totalNumber} listadas)',
-      search_placeholder: 'Buscar una criptomoneda',
-      search_text: 'Buscar una criptomoneda',
+      search_placeholder: 'Buscar criptomoneda',
+      search_text: 'Buscar criptomoneda',
     },
     crypto_detail: {
       breadcrumb: '{cryptoId} en detalle',
@@ -87,6 +88,7 @@ const messages = {
         last_month: 'Último mes',
         last_week: 'Última semana',
         last_24h: 'Últimas 24 horas',
+        toggle_locale: 'Cambiar idioma',
       }
     },
     message: {

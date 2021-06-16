@@ -12,6 +12,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    sorting: {
+      type: Object,
+      required: true,
+    }
   },
   methods: {
     getColumnValue(column, row) {
@@ -32,6 +36,16 @@ export default {
       return {
         'currency': 'text-right pr-10 w-3',
       }[column.type] || 'text-left'
+    },
+    getSortingIcon(column) {
+      if (this.sorting.field === column.id) {
+        return this.sorting.direction;
+      }
+    },
+  },
+  computed: {
+    computedSorting() {
+      return this.sorting 
     }
   },
 }
@@ -44,9 +58,12 @@ export default {
           v-for="(column, index) in columns"
           :key="index"
           :class="getHeaderClass(column)"
-          class="whitespace-nowrap"
+          class="whitespace-nowrap cursor-pointer"
+          @click.stop="$emit('sortColumn', column)"
         >
           {{ column.title }}
+          <span v-if="getSortingIcon(column) === 'asc'" role="img">🔼</span>
+          <span v-else-if="getSortingIcon(column) === 'desc'" role="img">🔽</span>
         </th>
       </tr>
     </thead>

@@ -14,6 +14,10 @@ export default {
     return {
       columns: [],
       searchCurrencyText: '',
+      sorting: {
+        field: 'rank',
+        direction: 'asc',
+      }
     }
   },
   mounted() {
@@ -47,13 +51,22 @@ export default {
     ];
   },
   methods: {
-    ...mapActions(cryptoStore, ['fetchCryptoList']),
+    ...mapActions(cryptoStore, ['fetchCryptoList', 'setCryptoListSorting']),
     goToRowDetail({row, column}) {
       this.$router.push({name: 'CurrencyDetail', params: {cryptoId: row.id}});
     },
     replaceByDefault(e) {
       e.target.src = image;
       e.target.title=this.$t('common_ui.image_not_found_title');
+    },
+    sortColumn(column) {
+      if (this.sorting.field === column.id) {
+        this.sorting.direction = this.sorting.direction === 'asc' ? 'desc' : 'asc'
+      } else {
+        this.sorting.direction = 'asc';
+      }
+      this.sorting.field = column.id;
+      this.setCryptoListSorting(this.sorting);
     }
   },
   computed: {
@@ -95,8 +108,10 @@ export default {
   <base-table
     :columns="columns"
     :rows="filteredCryptoList"
+    :sorting="sorting"
     class="mx-8 flex-auto mb-4"
     @click="goToRowDetail"
+    @sortColumn="sortColumn"
   >
     <!-- In case of 'name' column, overwrite the column to add the logo together with the name -->
     <template #name="{row}">

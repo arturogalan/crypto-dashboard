@@ -25,10 +25,14 @@ A cryptocurrencies dashboard example project, deployed in netlify:
   - BaseCard: A card component to show an array of props that includes a couple of slots to allow the parent component to insert title and subtitle easily also with type inference.
 - Formatting numbers: Percentages, currencies and decimals have been rounded to 2 decimals, but this can be easily changed in the main.js file editing 'minimumFractionDigits' prop for each type if we want more/less precision
 
+## Behaviors
+- When coming back from a currency detail to the dashboard, the table reset itself as the Dashboard.vue compontent is destroyed and created. If we want to keep the filter we just have to also store the searchCurrencyText value in the crypto.js store
+- Used emojis for the sorting direction arrows for fast prototyping purposes, we can use an embbebed font with svg's to make better icons.
+
 ## Resources
 - bot-coin logo: Made by me with aseprite app
 - Image not found ico: https://icons8.com/icon/35618/image-not-available
-
+- Fonts: Google fonts 'Nunito' and 'Press Start 2P'
 ## Testing
 - Unit testing: command `npm run test:unit`. For unit testing I've choosen Vue test utils https://next.vue-test-utils.vuejs.org/ A library to easily test Vue components, and Jest as the runner for this tests. I've made an example test for BaseCard.vue, you can see that I test the existence of props, non-existen props and slots. The evolution will be to test some css classes if we want to ensure they are present, or other behaviors. For other complex components/views we can also mock the store-management methods by symply adding methods to the mocks section when mounting the wrapper in the tests. Next step will be also to connect the execution to a ci to see the coverage of the code and stablish a coverage minimum for all the app, currently you can seee the report in text format when running `npm run test:unit`
 - End-to-end testing: command `npm run test:e2e`. For e2e testing I selected Cypress, it allows you to test elements in the screen, you can search for content as a result of some endpoint call (I test the presence of 'Bitcoin' row in the cryptos table), you can test navigation (I test the navigation to a currency detail) etc... It also make an screenshot when it fails (for instance, you can simply edit the second test Bitcoin word to Batcoin an run `npm run test:e2e` to see the failure snapshot under the cypress/screenshots folder). The evolution of this e2e maybe require them to be in a separated project as they depend on the internet (api calls) and can take some time to be executed.

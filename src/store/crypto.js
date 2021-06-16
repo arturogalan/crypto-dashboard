@@ -8,16 +8,16 @@ export const cryptoStore = defineStore({
     cryptoList: [],
     sorting: {
       field: 'rank',
-      order: 'asc',
+      direction: 'asc',
     },
   }),
   getters: {
     sortedCryptoList: (state) => state.cryptoList.sort(function (a, b) {
       const field = state.sorting.field;
       if (isNaN(a[field])) {
-        return a[field].localeCompare(b[field]);
+        return (a[field].localeCompare(b[field]) * (state.sorting.direction === 'asc' ? 1 : -1));
       }
-      return a[field] > (b[field]);
+      return (Number(a[field]) > Number(b[field]) ? 1 : -1) * (state.sorting.direction === 'asc' ? 1 : -1);
 
     }),
     cryptoProperties: (state) => (id) => {
@@ -38,8 +38,9 @@ export const cryptoStore = defineStore({
         });
       });
     },
-    setCryptoListSorting(field) {
-      this.sorting.field = field;
+    setCryptoListSorting(sorting) {
+      this.sorting.field = sorting.field;
+      this.sorting.direction = sorting.direction;
     },
   },
 })

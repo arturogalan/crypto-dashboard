@@ -25,27 +25,27 @@ export default {
     this.columns = [
       {
         id: 'rank',
-        title: this.$t('common_ui.currency_columns.rank'),
+        title: 'common_ui.currency_columns.rank',
         type: 'string',
       },
       {
         id: 'name',
-        title: this.$t('common_ui.currency_columns.name'),
+        title: 'common_ui.currency_columns.name',
         type: 'string',
       },
       {
         id: 'symbol',
-        title: this.$t('common_ui.currency_columns.symbol'),
+        title: 'common_ui.currency_columns.symbol',
         type: 'string',
       },
       {
         id: 'priceUsd',
-        title: this.$t('common_ui.currency_columns.priceUsd'),
+        title: 'common_ui.currency_columns.priceUsd',
         type: 'currency',
       },
       {
         id: 'changePercent24Hr',
-        title: this.$t('common_ui.currency_columns.changePercent24Hr'),
+        title: 'common_ui.currency_columns.changePercent24Hr',
         type: 'percentage',
       },        
     ];

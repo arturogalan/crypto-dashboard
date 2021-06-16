@@ -170,12 +170,16 @@ const datetimeFormats = {
       hour: 'numeric',
       minute: 'numeric',
       hour12: true
-    }
+    },
+    day: {
+      weekday: 'short',
+      hour: 'numeric',
+    }    
   }
 }
 // 2. Create i18n instance with options
 const i18n = createI18n({
-  locale: 'es', // set locale
+  locale: 'en', // set locale
   fallbackLocale: 'es', // set fallback locale
   messages, // set locale messages
   datetimeFormats,

@@ -58,7 +58,7 @@
               class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 p-4 border-b"
             >
                 <p class="text-gray-600">
-                    {{ cardProp.title }}
+                    {{ $t(cardProp.title) }}
                 </p>
                 <p :class="getFieldClass(cardProp, cardContent)">
                     {{ getFieldValue(cardProp, cardContent) }}

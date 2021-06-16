@@ -61,7 +61,7 @@ export default {
           class="whitespace-nowrap cursor-pointer"
           @click.stop="$emit('sortColumn', column)"
         >
-          {{ column.title }}
+          {{ $t(column.title) }}
           <span v-if="getSortingIcon(column) === 'asc'" role="img">🔼</span>
           <span v-else-if="getSortingIcon(column) === 'desc'" role="img">🔽</span>
         </th>

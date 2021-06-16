@@ -27,19 +27,19 @@ A cryptocurrencies dashboard example project, deployed in netlify:
 
 ## Project structure
 ```
-├── cypress                                     # Cypress folder for snapshots
-├── dist                                        # Generated files of the app
-├── src                                         # Source code
-|         ├── assets                            # Static images folder
-|         ├── components                        # Vue reusable components
-|         ├── router                            # The app routes and the definition of components that render them
-|         ├── services                          # API calls services
-|         ├── store                             # State management stores
-|         ├── utils                             # Utilities javascript functions
-|         ├── views                             # Vue views components, each one corresponding to one app path
-├── test                                        # unit and e2e tests
-|         ├── e2e                              # Unit tests with jest and Vue test utils, you can also add simple jest tests of vanilla function if required
-|         ├── unit                             # e2e tests with cypress
+├── cypress                         # Cypress folder for snapshots
+├── dist                            # Generated files of the app
+├── src                             # Source code
+|         ├── assets                # Static images folder
+|         ├── components            # Vue reusable components
+|         ├── router                # The app routes and the definition of components that render them
+|         ├── services              # API calls services
+|         ├── store                 # State management stores
+|         ├── utils                 # Utilities javascript functions
+|         ├── views                 # Vue views components, each one corresponding to one app path
+├── test                            # unit and e2e tests
+|         ├── e2e                   # Unit tests with jest and Vue test utils, you can also add simple jest tests of vanilla function if required
+|         ├── unit                  # e2e tests with cypress
 
 ```
 ## Behaviors

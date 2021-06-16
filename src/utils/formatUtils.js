@@ -34,7 +34,7 @@ export function getRangeAndInterval(selectedInterval) {
     start.setHours(0, 0, 0, 0);
   } else if (selectedInterval === cryptoHistoryIntervals.WEEK) {
     // Set it to one day ago
-    start.setDate(start.getDate() - 15);
+    start.setDate(start.getDate() - 7);
     start.setHours(0, 0, 0, 0);
   } else if (selectedInterval === cryptoHistoryIntervals.MONTH) {
     // Set it to one month ago

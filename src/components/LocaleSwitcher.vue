@@ -3,36 +3,29 @@ export default {
   name: 'locale-switcher',
   data() {
     return {
+      appLocale: this.$i18n.locale,
     }
   },
-  mounted () {
-    this.toggleTheme();
+  computed: {
   },
   methods: {
-    toggleTheme () {
-      localStorage.theme === 'dark' ? localStorage.theme = 'light' : localStorage.theme = 'dark';
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-        this.theme = 'dark';
-      } else {
-        document.documentElement.classList.remove('dark')
-        this.theme = 'light';
-      }      
+    changeLocale(selectedLocale) {
+      this.appLocale = selectedLocale;
+      this.$i18n.locale = selectedLocale;
     }
-  }
+  },
 }
 </script>
 <template>
   <div
     href="#"
     class="text-xl cursor-pointer"
-    title="Toggle locale"
+    :title="$t('common_ui.button.toggle_locale')"
     aria-label="Toggle locale"
     
   >
-    <span @click.prevent="$i18n.locale = 'en'" v-if="$i18n.locale === 'es'">🇪🇸</span> 
-    <span @click.prevent="$i18n.locale = 'es'" v-else>🇺🇸</span> 
+    <span @click.prevent="changeLocale('es')" v-if="appLocale === 'en'">🇪🇸</span> 
+    <span @click.prevent="changeLocale('en')" v-else>🇺🇸</span> 
   </div>
 </template>
 

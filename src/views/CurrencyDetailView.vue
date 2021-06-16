@@ -131,7 +131,7 @@ export default {
   >
   <template #title>
     <div class="flex content-center items-center justify-center">
-      <img class="w-10 h-10 ml-2 mr-2" :src="selectedCrypto.logo" @error="replaceByDefault"/>
+      <img class="w-10 h-10 ml-2 mr-2" :src="selectedCrypto.logo" :title="selectedCrypto.name" @error="replaceByDefault"/>
       <div>
         {{ selectedCrypto.id }}
       </div>

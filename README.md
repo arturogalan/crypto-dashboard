@@ -1,8 +1,24 @@
 # Cryptocurrencies dashboard example
 
 A cryptocurrencies dashboard example project, deployed in netlify:
-[bot-coin](https://www.arturo-galan.com)
+## [bot-coin](https://bot-coin.netlify.app/)
 
+### 1. Install the project (npm is required)
+
+ - `npm install`
+
+### 2. run the project
+
+ - `npm run dev`
+
+### 2. run the tests  
+ - `npm run test:unit` to run unit tests
+ - `npm run test:e2e` to run e2e tests
+
+### 3. build the app
+
+  - To build the app in the dist directory, run `npm run build`
+  
 ## Libraries used and reasons:
 - Vite: Frontend tooling to make the bundle with hot module replacement and native ES modules mechanism to serve source files. Its relatively easy to refactor this into a Webpack project when the app turns into something more professional or retro-compatible if needed.
 - Tailwind: Nice tool for prototyping and with a nice base set of css classes to focus on other things at this early stage of development

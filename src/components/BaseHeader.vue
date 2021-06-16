@@ -1,12 +1,33 @@
 <script>
   import ThemeSwitcher from '../components/ThemeSwitcher.vue'
   import LocaleSwitcher from '../components/LocaleSwitcher.vue'
+  import BaseSwitch from '../components/BaseSwitch.vue'
+  import { mapActions } from 'pinia'
+  import { cryptoStore } from '../store/crypto'
 
   export default {
     name: 'base-header',
     components: {
       ThemeSwitcher,
       LocaleSwitcher,
+      BaseSwitch,
+    },
+    data() {
+      return {
+        isRealTimeActive: false,
+      }
+    },
+    methods: {
+    ...mapActions(cryptoStore, ['startPeriodicFetchCryptoList', 'cancelUserEventsPeriodicCheck']),
+
+      toggleRealTime() {
+        this.isRealTimeActive = !this.isRealTimeActive;
+        if (this.isRealTimeActive) {
+          this.startPeriodicFetchCryptoList()
+        } else {
+          this.cancelUserEventsPeriodicCheck()
+        }
+      }
     },
   }
 </script>
@@ -21,6 +42,12 @@
 
     <h2 class="title-logo ml-3 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
     <span class="ml-3 text-lg whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
+    </div>
+    <div>
+      <base-switch
+        :label="$t('common_ui.button.toggle_real_time')"
+        @click="toggleRealTime()"
+      />
     </div>
     <div class="flex">
     <locale-switcher class="mr-3"/>

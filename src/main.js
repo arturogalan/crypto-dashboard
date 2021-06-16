@@ -47,6 +47,8 @@ const messages = {
         last_week: 'Last week',
         last_24h: 'Last 24 hours',
         toggle_locale: 'Toggle locale',
+        toggle_real_time: 'Toggle real-time updates'
+
       },
     },
     message: {
@@ -89,6 +91,7 @@ const messages = {
         last_week: 'Última semana',
         last_24h: 'Últimas 24 horas',
         toggle_locale: 'Cambiar idioma',
+        toggle_real_time: 'Cambiar actualización en tiempo real'
       }
     },
     message: {

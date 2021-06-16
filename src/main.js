@@ -21,7 +21,7 @@ const messages = {
     },
     crypto_detail: {
       breadcrumb: '{cryptoId} detail',
-      chart_title: 'Evolution of {cryptoName} price in the last month',
+      chart_title: 'Evolution of {cryptoName} price in the ',
     },
     common_ui: {
       header_desc: 'Your cryptocurrencies dashboard !',
@@ -36,6 +36,16 @@ const messages = {
         maxSupply: 'Max supply',
         volumeUsd24Hr: 'Volume traded last 24h',
         vwap24Hr: 'Volume Weighted Average Price last 24h',
+      },
+      date: {
+        last_month: 'last month',
+        last_week: 'last week',
+        last_24h: 'last 24 hours',
+      },
+      button: {
+        last_month: 'Last month',
+        last_week: 'Last week',
+        last_24h: 'Last 24 hours',
       },
     },
     message: {
@@ -52,7 +62,7 @@ const messages = {
     },
     crypto_detail: {
       breadcrumb: '{cryptoId} en detalle',
-      chart_title: 'Evolución del precio de {cryptoName} en el último mes',
+      chart_title: 'Evolución del precio de {cryptoName} en ',
     },
     common_ui: {
       header_desc: 'Tu panel de control de cryptomonedas !',
@@ -67,7 +77,17 @@ const messages = {
         maxSupply: 'Max supply',
         volumeUsd24Hr: 'Volumen negociado últimas 24h',
         vwap24Hr: 'Precio medio del volumen ponderado últimas 24h',
-      },      
+      }, 
+      date: {
+        last_month: 'el último mes',
+        last_week: 'la última semana',
+        last_24h: 'las últimas 24 horas',
+      },
+      button: {
+        last_month: 'Último mes',
+        last_week: 'Última semana',
+        last_24h: 'Últimas 24 horas',
+      }
     },
     message: {
       hello: 'hola'
@@ -130,6 +150,10 @@ const datetimeFormats = {
       weekday: 'long',
       hour: 'numeric',
       minute: 'numeric'
+    },
+    day: {
+      weekday: 'short',
+      hour: 'numeric',
     }
   },
   es: {
@@ -151,7 +175,7 @@ const datetimeFormats = {
 }
 // 2. Create i18n instance with options
 const i18n = createI18n({
-  locale: 'en', // set locale
+  locale: 'es', // set locale
   fallbackLocale: 'es', // set fallback locale
   messages, // set locale messages
   datetimeFormats,

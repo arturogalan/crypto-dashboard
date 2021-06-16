@@ -1,3 +1,5 @@
-export const MyCryptoConst = {
-  MYCONST: 'This is my const',
+export const cryptoHistoryIntervals = {
+  'DAY': 'DAY',
+  'MONTH': 'MONTH',
+  'WEEK': 'WEEK',
 };

@@ -26,26 +26,31 @@ export default {
         id: 'rank',
         title: 'common_ui.currency_columns.rank',
         type: 'string',
+        isAnimated: false,
       },
       {
         id: 'name',
         title: 'common_ui.currency_columns.name',
         type: 'string',
+        isAnimated: false,
       },
       {
         id: 'symbol',
         title: 'common_ui.currency_columns.symbol',
         type: 'string',
+        isAnimated: false,
       },
       {
         id: 'priceUsd',
         title: 'common_ui.currency_columns.priceUsd',
         type: 'currency',
+        isAnimated: true,
       },
       {
         id: 'changePercent24Hr',
         title: 'common_ui.currency_columns.changePercent24Hr',
         type: 'percentage',
+        isAnimated: true,
       },        
     ];
   },
@@ -69,7 +74,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(cryptoStore, ['sortedCryptoList']),
+    ...mapState(cryptoStore, ['sortedCryptoList', 'isRealTimeActive']),
     filteredCryptoList() {
       return this.sortedCryptoList.filter((el)=> {
         const isFiltering = !!this.searchCurrencyText;
@@ -111,6 +116,7 @@ export default {
     :columns="columns"
     :rows="filteredCryptoList"
     :sorting="sorting"
+    :showAnimation="isRealTimeActive"
     class="mx-8 flex-auto mb-4"
     @click="goToRowDetail"
     @sortColumn="sortColumn"

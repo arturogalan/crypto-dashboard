@@ -9,7 +9,7 @@ export default {
       * @id (MANDATORY) field unique identifier and name of the column
       * @title (MANDATORY) the text to be shown for that column
       * @type (MANDATORY) the type of the column-> ['percentage','currency','integer']
- 
+      * @isAnimated (OPTIONAL) the column has animation when the value changes
     */
     columns: {
       type: Array,
@@ -30,6 +30,10 @@ export default {
     sorting: {
       type: Object,
       required: true,
+    },
+    showAnimation: {
+      type: Boolean,
+      default: false,
     }
   },
   methods: {
@@ -42,10 +46,12 @@ export default {
     },
     getColumnClass(column, row) {
       const value = row[column.id];
-      return {
+      const formatClass = {
         'currency': 'text-right pr-10 w-3',
         'percentage': `text-right w-3 ${value < 0 ? 'text-red-500' : 'text-blue-500'}`,
       }[column.type] || 'text-left pl-2'
+      const animatedClass = this.showAnimation && column.isAnimated ? 'bounce-animated' : '';
+      return [formatClass, animatedClass].join(' ');
     },
     getHeaderClass(column) {
       return {
@@ -57,6 +63,15 @@ export default {
         return this.sorting.direction;
       }
     },
+    getColumnKey(column, colIndex, rowIndex, row) {
+      //If column is animated the column value is part of the key to trigger animation when value changes
+      if (column.isAnimated) {
+        return `row-${rowIndex}-col-${colIndex}-value-${this.getColumnValue(column, row)}`;
+      } else {
+        return `row-${rowIndex}-col-${colIndex}`;
+      }
+
+    }
   },
   computed: {
     computedSorting() {
@@ -97,7 +112,7 @@ export default {
       >
         <td
           v-for="(column, colIndex) in columns"
-          :key="`row-${rowIndex}-col-${colIndex}`"
+          :key="getColumnKey(column, colIndex, rowIndex, row)"
           @click.stop="$emit('click', { row, column })"
           class="h-16"
           :class="getColumnClass(column, row)"
@@ -113,4 +128,19 @@ export default {
 
 </template>
 
-<style scoped></style>
+<style scoped>
+  .bounce-animated {
+    animation: pulse_animation_very_tiny 0.5s;
+  }
+  @keyframes pulse_animation_very_tiny {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>

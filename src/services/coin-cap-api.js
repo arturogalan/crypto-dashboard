@@ -16,14 +16,6 @@ export function fetchCryptoVariants() {
     }).then(({data})=> data);
 };
 export function fetchCryptoHistory({currencyId, selectedInterval}) {
-  // // Get a date object for the current time
-  // var start = new Date();
-  // // Set it to one month ago
-  // start.setMonth(start.getMonth() - 1);
-  // // Zero the time component
-  // start.setHours(0, 0, 0, 0);
-  // const end = new Date();
-
   const {interval, start, end} = getRangeAndInterval(selectedInterval);
   const url = urls.history({
     currencyId,

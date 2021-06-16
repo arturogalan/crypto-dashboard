@@ -1,6 +1,8 @@
 // @ts-check
 import { defineStore } from 'pinia'
 import { fetchCryptoVariants } from '../services/coin-cap-api'
+import { pollingConstants } from '../utils/baseConstants'
+import { mergeCryptoList } from '../utils/dataUtils'
 
 export const cryptoStore = defineStore({
   id: 'crypto',
@@ -9,6 +11,10 @@ export const cryptoStore = defineStore({
     sorting: {
       field: 'rank',
       direction: 'asc',
+    },
+    pollingStatus: {
+      timerId: undefined,
+      isRealTimeActive: false,
     },
   }),
   getters: {
@@ -22,7 +28,8 @@ export const cryptoStore = defineStore({
     }),
     cryptoProperties: (state) => (id) => {
       return state.cryptoList.find((crypto) => crypto.id === id)
-    }
+    },
+    isRealTimeActive: (state)=> state.pollingStatus.isRealTimeActive,
   },  
   actions: {
     fetchCryptoList() {
@@ -42,5 +49,23 @@ export const cryptoStore = defineStore({
       this.sorting.field = sorting.field;
       this.sorting.direction = sorting.direction;
     },
+    startPeriodicFetchCryptoList() {
+      console.log('starting check')
+      const timerId = setInterval(()=> {
+        fetchCryptoVariants().then(({data})=> {
+          mergeCryptoList(this.cryptoList, data);
+        })
+      }, pollingConstants.INITIAL_POLLING_INTERVAL);
+      this.pollingStatus.isRealTimeActive = true;
+      this.pollingStatus.timerId = timerId;
+    },
+    cancelUserEventsPeriodicCheck() {
+      console.log('canceling check')
+      clearInterval(this.pollingStatus.timerId);
+      this.pollingStatus.timerId = undefined;
+      this.pollingStatus.isRealTimeActive = false;
+    },
   },
 })
+
+

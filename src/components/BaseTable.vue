@@ -4,14 +4,29 @@ import { formatPropValue } from '../utils/formatUtils'
 export default {
   name: 'base-table',
   props: {
+    /**
+      * Array of columns descriptor with his properties
+      * @id (MANDATORY) field unique identifier and name of the column
+      * @title (MANDATORY) the text to be shown for that column
+      * @type (MANDATORY) the type of the column-> ['percentage','currency','integer']
+ 
+    */
     columns: {
       type: Array,
       default: () => [],
     },
+    /**
+     * An array containg the rows, each row should be an object with the properties named in columns prop
+     */
     rows: {
       type: Array,
       default: () => [],
     },
+   /**
+     * The sorting object indicating
+     * @field (MANDATORY) The field to sort
+     * @direction (MANDATORY) The direction of the sorting ['asc','desc']
+     */
     sorting: {
       type: Object,
       required: true,

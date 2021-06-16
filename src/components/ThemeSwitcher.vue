@@ -1,18 +1,4 @@
-<template>
-  <div
-    href="#"
-    class="text-xl cursor-pointer"
-    title="Toggle theme between light and dark"
-    aria-label="Toggle theme between light and dark"
-    @click.prevent="toggleTheme"
-  >
-    <span v-if="theme === 'light'">🔆</span> 
-    <span v-else>🌛 </span> 
-  </div>
-</template>
-
 <script>
-
 export default {
   name: 'theme-switcher',
   data() {
@@ -38,3 +24,15 @@ export default {
   }
 }
 </script>
+<template>
+  <div
+    href="#"
+    class="text-xl cursor-pointer"
+    title="Toggle theme between light and dark"
+    aria-label="Toggle theme between light and dark"
+    @click.prevent="toggleTheme"
+  >
+    <span v-if="theme === 'light'">🔆</span> 
+    <span v-else>🌛 </span> 
+  </div>
+</template>

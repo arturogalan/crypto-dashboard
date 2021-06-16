@@ -5,7 +5,6 @@ import { mapActions, mapState } from 'pinia'
 import BaseTable from '../components/BaseTable.vue'
 import image from '../assets/image-not-found.png'
 
- 
 export default {
   components: {
     BaseTable,

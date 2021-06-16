@@ -1,20 +1,3 @@
-<template>
-<div class="flex items-center justify-center px-4">
-  <div class="max-w-4xl bg-white w-full rounded-lg shadow-xl">
-  <div>
-    <vue3-chart-js
-      :id="lineChart.id"
-      :type="lineChart.type"
-      :data="lineChart.data"
-      :options="lineChart.options"
-    ></vue3-chart-js>
-  </div>
-  </div>
-
-  </div>
-
-</template>
-
 <script>
 import Vue3ChartJs from '@j-t-mcc/vue3-chartjs'
 
@@ -24,14 +7,23 @@ export default {
     Vue3ChartJs,
   },
   props: {
+    /**
+      * The title of the graph
+    */
     graphTitle: {
       type: String,
       default: ()=> '',
     },
+    /**
+      * The array of labels for each data point
+    */
     graphLabels: {
       type: Array,
       required: true,
     },
+    /**
+      * The array of datapoints
+    */
     graphData: {
       type: Array,
       required: true,
@@ -86,3 +78,21 @@ export default {
   },
 }
 </script>
+<template>
+<div class="flex items-center justify-center px-4">
+  <div class="max-w-4xl bg-white w-full rounded-lg shadow-xl">
+  <div>
+    <vue3-chart-js
+      :id="lineChart.id"
+      :type="lineChart.type"
+      :data="lineChart.data"
+      :options="lineChart.options"
+    ></vue3-chart-js>
+  </div>
+  </div>
+
+  </div>
+
+</template>
+
+

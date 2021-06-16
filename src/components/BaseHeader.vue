@@ -1,10 +1,12 @@
 <script>
   import ThemeSwitcher from '../components/ThemeSwitcher.vue'
+  import LocaleSwitcher from '../components/LocaleSwitcher.vue'
 
   export default {
     name: 'base-header',
     components: {
-      ThemeSwitcher
+      ThemeSwitcher,
+      LocaleSwitcher,
     },
     data() {
       return {
@@ -29,8 +31,10 @@
     <h2 class="title-logo ml-3 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
     <span class="ml-3 text-lg whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
     </div>
-  <!-- <div class="cursor-pointer">🌒</div> -->
+    <div class="flex">
+    <locale-switcher class="mr-3"/>
     <theme-switcher />
+    </div>
   </nav>
 </header>
 </template>

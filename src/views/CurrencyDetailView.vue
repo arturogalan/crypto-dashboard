@@ -40,32 +40,32 @@ export default {
     this.cardProperties = [
       {
         id: 'marketCapUsd',
-        title: this.$t('common_ui.currency_columns.marketCapUsd'),
+        title: 'common_ui.currency_columns.marketCapUsd',
         type: 'currency',
       },
       {
         id: 'priceUsd',
-        title: this.$t('common_ui.currency_columns.priceUsd'),
+        title: 'common_ui.currency_columns.priceUsd',
         type: 'currency',
       },
       {
         id: 'changePercent24Hr',
-        title: this.$t('common_ui.currency_columns.changePercent24Hr'),
+        title: 'common_ui.currency_columns.changePercent24Hr',
         type: 'percentage',
       },
       {
         id: 'maxSupply',
-        title: this.$t('common_ui.currency_columns.maxSupply'),
+        title: 'common_ui.currency_columns.maxSupply',
         type: 'integer',
       },
       {
         id: 'volumeUsd24Hr',
-        title: this.$t('common_ui.currency_columns.volumeUsd24Hr'),
+        title: 'common_ui.currency_columns.volumeUsd24Hr',
         type: 'currency',
       },
       {
         id: 'vwap24Hr',
-        title: this.$t('common_ui.currency_columns.vwap24Hr'),
+        title: 'common_ui.currency_columns.vwap24Hr',
         type: 'currency',
       }
     ];

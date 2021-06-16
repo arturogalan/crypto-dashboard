@@ -2,22 +2,21 @@
   <div
     href="#"
     class="text-xl cursor-pointer"
-    title="Toggle theme between light and dark"
-    aria-label="Toggle theme between light and dark"
-    @click.prevent="toggleTheme"
+    title="Toggle locale"
+    aria-label="Toggle locale"
+    
   >
-    <span v-if="theme === 'light'">🔆</span> 
-    <span v-else>🌛 </span> 
+    <span @click.prevent="$i18n.locale = 'en'" v-if="$i18n.locale === 'es'">🇪🇸</span> 
+    <span @click.prevent="$i18n.locale = 'es'" v-else>🇺🇸</span> 
   </div>
 </template>
 
 <script>
 
 export default {
-  name: 'theme-switcher',
+  name: 'locale-switcher',
   data() {
     return {
-      theme: '',
     }
   },
   mounted () {

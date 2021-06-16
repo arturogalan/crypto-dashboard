@@ -25,6 +25,23 @@ A cryptocurrencies dashboard example project, deployed in netlify:
   - BaseCard: A card component to show an array of props that includes a couple of slots to allow the parent component to insert title and subtitle easily also with type inference.
 - Formatting numbers: Percentages, currencies and decimals have been rounded to 2 decimals, but this can be easily changed in the main.js file editing 'minimumFractionDigits' prop for each type if we want more/less precision
 
+## Project structure
+```
+├── cypress                                     # Cypress folder for snapshots
+├── dist                                        # Generated files of the app
+├── src                                         # Source code
+|         ├── assets                            # Static images folder
+|         ├── components                        # Vue reusable components
+|         ├── router                            # The app routes and the definition of components that render them
+|         ├── services                          # API calls services
+|         ├── store                             # State management stores
+|         ├── utils                             # Utilities javascript functions
+|         ├── views                             # Vue views components, each one corresponding to one app path
+├── test                                        # unit and e2e tests
+|         ├── e2e                              # Unit tests with jest and Vue test utils, you can also add simple jest tests of vanilla function if required
+|         ├── unit                             # e2e tests with cypress
+
+```
 ## Behaviors
 - When coming back from a currency detail to the dashboard, the table reset itself as the Dashboard.vue compontent is destroyed and created. If we want to keep the filter we just have to also store the searchCurrencyText value in the crypto.js store
 - Used emojis for the sorting direction arrows for fast prototyping purposes, we can use an embbebed font with svg's to make better icons.

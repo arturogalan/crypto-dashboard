@@ -1,18 +1,4 @@
-<template>
-  <div
-    href="#"
-    class="text-xl cursor-pointer"
-    title="Toggle locale"
-    aria-label="Toggle locale"
-    
-  >
-    <span @click.prevent="$i18n.locale = 'en'" v-if="$i18n.locale === 'es'">🇪🇸</span> 
-    <span @click.prevent="$i18n.locale = 'es'" v-else>🇺🇸</span> 
-  </div>
-</template>
-
 <script>
-
 export default {
   name: 'locale-switcher',
   data() {
@@ -37,3 +23,17 @@ export default {
   }
 }
 </script>
+<template>
+  <div
+    href="#"
+    class="text-xl cursor-pointer"
+    title="Toggle locale"
+    aria-label="Toggle locale"
+    
+  >
+    <span @click.prevent="$i18n.locale = 'en'" v-if="$i18n.locale === 'es'">🇪🇸</span> 
+    <span @click.prevent="$i18n.locale = 'es'" v-else>🇺🇸</span> 
+  </div>
+</template>
+
+

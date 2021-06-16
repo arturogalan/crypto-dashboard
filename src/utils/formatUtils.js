@@ -1,14 +1,14 @@
 import {cryptoHistoryIntervals} from '../utils/baseConstants'
 
 /**
-   * Get a value of a type properly formatted
-   *
-   * @param {n} the i18n $n function
-   * @param {value} the value to be formatted
-   * @param {type} the type of the field-> ['percentage','currency']
-   * 
-   * @return {String} the fild properly formatted
-   */
+ * Get a value of a type properly formatted
+ *
+ * @param {n} the i18n $n function
+ * @param {value} the value to be formatted
+ * @param {type} the type of the field-> ['percentage','currency']
+ * 
+ * @return {String} the fild properly formatted
+ */
 export function formatPropValue({n, value, type}) {
   if (!value) return 'N/A';
   return {
@@ -18,6 +18,11 @@ export function formatPropValue({n, value, type}) {
     'integer': ()=> n(parseInt(value), 'integer'),
   }[type]() || value
 }
+
+/**
+ * Get an object with an start date, end date and distance between points depending on the selectedInterval
+ * @param {selectedInterval} Must be one defined in cryptoHistoryIntervals baseConstants
+*/ 
 export function getRangeAndInterval(selectedInterval) {
   // end date always is now
   const end = new Date();

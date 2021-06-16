@@ -8,15 +8,6 @@
       ThemeSwitcher,
       LocaleSwitcher,
     },
-    data() {
-      return {
-        theme: '',
-      }
-    },
-    mounted () {
-    },
-    methods: {
-    },
   }
 </script>
 <template>

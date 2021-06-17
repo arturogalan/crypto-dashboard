@@ -27,9 +27,9 @@ const messages = {
       header_desc: 'Your cryptocurrencies dashboard !',
       image_not_found_title: 'This cryptocurrency image cannot be found',
       currency_columns: {
-        rank: 'Ranking',
-        name: 'Currency name',
-        symbol: 'Currency symbol',
+        rank: 'Rank',
+        name: 'Name',
+        symbol: 'Symbol',
         priceUsd: 'Last price',
         changePercent24Hr: 'Change % (24h)',
         marketCapUsd: 'Market cap',
@@ -71,7 +71,7 @@ const messages = {
       header_desc: 'Tu panel de control de cryptomonedas !',
       image_not_found_title: 'Esta imagen de crytomoneda no se puede mostrar',
       currency_columns: {
-        rank: 'Ranking',
+        rank: 'Rank',
         name: 'Nombre',
         symbol: 'Símbolo',
         priceUsd: 'Último precio',

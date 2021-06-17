@@ -32,7 +32,7 @@ export default {
     aria-label="Toggle theme between light and dark"
     @click.prevent="toggleTheme"
   >
-    <span v-if="theme === 'light'">🔆</span> 
+    <span v-if="theme === 'dark'">🔆</span> 
     <span v-else>🌛 </span> 
   </div>
 </template>

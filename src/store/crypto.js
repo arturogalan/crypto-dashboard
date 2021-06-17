@@ -59,7 +59,7 @@ export const cryptoStore = defineStore({
       this.pollingStatus.isRealTimeActive = true;
       this.pollingStatus.timerId = timerId;
     },
-    cancelUserEventsPeriodicCheck() {
+    cancelPeriodicFetchCryptoList() {
       console.log('canceling check')
       clearInterval(this.pollingStatus.timerId);
       this.pollingStatus.timerId = undefined;

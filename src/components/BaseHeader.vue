@@ -18,14 +18,14 @@
       }
     },
     methods: {
-    ...mapActions(cryptoStore, ['startPeriodicFetchCryptoList', 'cancelUserEventsPeriodicCheck']),
+    ...mapActions(cryptoStore, ['startPeriodicFetchCryptoList', 'cancelPeriodicFetchCryptoList']),
 
       toggleRealTime() {
         this.isRealTimeActive = !this.isRealTimeActive;
         if (this.isRealTimeActive) {
           this.startPeriodicFetchCryptoList()
         } else {
-          this.cancelUserEventsPeriodicCheck()
+          this.cancelPeriodicFetchCryptoList()
         }
       }
     },

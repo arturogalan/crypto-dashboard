@@ -1,5 +1,6 @@
 {
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "Arturo Galan <arturo.galan@gmail.com>",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -52,5 +53,10 @@
         }
       ]
     ]
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arturogalan/crypto-dashboard.git"
   }
 }

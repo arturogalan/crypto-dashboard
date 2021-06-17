@@ -142,7 +142,7 @@ const numberFormats = {
   },  
 };
 const datetimeFormats = {
-  'en': {
+  en: {
     short: {
       year: 'numeric',
       month: 'short',

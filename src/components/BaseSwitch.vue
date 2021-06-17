@@ -12,7 +12,7 @@
 <template>
   <div class="flex items-center justify-center w-full">
     <label for="toggleB" class="flex items-center cursor-pointer">
-      <div class="mr-3 text-green-400 font-medium">
+      <div class="mr-3 text-green-400 font-medium text-sm whitespace-nowrap">
         {{ label }}
       </div>
       <!-- toggle -->

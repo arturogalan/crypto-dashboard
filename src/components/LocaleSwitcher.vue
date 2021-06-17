@@ -19,7 +19,7 @@ export default {
 <template>
   <div
     href="#"
-    class="text-xl cursor-pointer"
+    class="text-xl cursor-pointer flex items-center"
     :title="$t('common_ui.button.toggle_locale')"
     aria-label="Toggle locale"
     

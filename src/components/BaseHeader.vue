@@ -33,25 +33,24 @@
 </script>
 <template>
 <header class="py-5 bg-gray-700 text-white text-center">
-  <nav class="flex items-end justify-between mr-7">
+  <nav class="md:flex md:items-center md:justify-between">
     <div
-      class="flex items-end cursor-pointer"
+      class="lg:flex lg:justify-between justify-center items-end cursor-pointer"
       @click="$router.push({name: 'Dashboard'})"
     >
-    <img class="w-12 h-12 ml-3 rounded opacity-60" src="../assets/bot-coin.png"/>
-
-    <h2 class="title-logo ml-3 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
-    <span class="ml-3 text-lg whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
+      <div class="flex items-end justify-center">
+        <img class="w-12 h-12 ml-3 rounded opacity-60" src="../assets/bot-coin.png"/>
+        <h2 class="title-logo ml-3 text-blue-500 whitespace-nowrap">bot-<span class="text-yellow-200">coin</span></h2>
+      </div>
+      <span class="ml-3 text-sm whitespace-nowrap">{{ $t('common_ui.header_desc') }}</span>
     </div>
-    <div>
+    <div class="flex justify-items-center content-center mr-2 mt-2 pt-3 md:pt-0 border-gray-50 border-dashed border-t-2 md:border-none">
       <base-switch
         :label="$t('common_ui.button.toggle_real_time')"
         @click="toggleRealTime()"
       />
-    </div>
-    <div class="flex">
-    <locale-switcher class="mr-3"/>
-    <theme-switcher />
+      <locale-switcher class="mr-3 ml-3"/>
+      <theme-switcher />
     </div>
   </nav>
 </header>

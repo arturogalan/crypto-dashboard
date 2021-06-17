@@ -16,7 +16,8 @@ export default {
       sorting: {
         field: 'rank',
         direction: 'asc',
-      }
+      },
+      notFoundMessage: '',
     }
   },
   mounted() {
@@ -53,6 +54,7 @@ export default {
         isAnimated: true,
       },        
     ];
+    this.notFoundMessage = this.$t('common_ui.image_not_found_title');
   },
   methods: {
     ...mapActions(cryptoStore, ['fetchCryptoList', 'setCryptoListSorting']),
@@ -61,7 +63,7 @@ export default {
     },
     replaceByDefault(e) {
       e.target.src = image;
-      e.target.title=this.$t('common_ui.image_not_found_title');
+      e.target.title=this.notFoundMessage
     },
     sortColumn(column) {
       if (this.sorting.field === column.id) {
@@ -96,7 +98,7 @@ export default {
 
 <template>
   <div class="flex content-between justify-between mb-5">
-    <div class="w-auto text-left ml-8 whitespace-nowrap">
+    <div class="w-auto text-left md:ml-8 whitespace-nowrap text-xs md:text-base flex items-center">
       {{ cyptoListedText }}
     </div>
     <div
@@ -104,7 +106,7 @@ export default {
     >
       <span class="text-2xl mr-2">🔎</span> 
       <input
-        class="border-2 box-border border-green-700 rounded-lg p-1"
+        class="text-xs md:text-base border-2 box-border border-green-700 rounded-lg p-1"
         type="text"
         :placeholder="$t('dashboard.search_placeholder')"
         v-model="searchCurrencyText"
@@ -117,7 +119,7 @@ export default {
     :rows="filteredCryptoList"
     :sorting="sorting"
     :showAnimation="isRealTimeActive"
-    class="mx-8 flex-auto mb-4"
+    class="mx-2 md:mx-8 flex-auto mb-4"
     @click="goToRowDetail"
     @sortColumn="sortColumn"
   >

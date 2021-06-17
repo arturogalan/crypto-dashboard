@@ -47,15 +47,19 @@ export default {
     getColumnClass(column, row) {
       const value = row[column.id];
       const formatClass = {
-        'currency': 'text-right pr-10 w-3',
-        'percentage': `text-right w-3 ${value < 0 ? 'text-red-500' : 'text-blue-500'}`,
+        'currency': 'text-right pr-2 w-3',
+        'percentage': `text-right ${value < 0 ? 'text-red-500' : 'text-blue-500'}`,
       }[column.type] || 'text-left pl-2'
+      const widthClass = {
+        'rank': 'w-1',
+      }[column.id] || 'mw-3'
       const animatedClass = this.showAnimation && column.isAnimated ? 'bounce-animated' : '';
       return [formatClass, animatedClass].join(' ');
     },
     getHeaderClass(column) {
       return {
-        'currency': 'text-right pr-10 w-3',
+        'currency': 'text-right pr-2 w-3',
+        'percentage': 'text-right',
       }[column.type] || 'text-left'
     },
     getSortingIcon(column) {
@@ -81,14 +85,14 @@ export default {
 }
 </script>
 <template>
-  <table class="table-auto border-collapse">
+  <table class="table-fixed md:table-auto border-collapse">
     <thead>
       <tr>
         <th
           v-for="(column, index) in columns"
           :key="index"
           :class="getHeaderClass(column)"
-          class="whitespace-nowrap cursor-pointer"
+          class="whitespace-nowrap cursor-pointer text-xs md:text-base"
           @click.stop="$emit('sortColumn', column)"
         >
           {{ $t(column.title) }}
@@ -102,6 +106,7 @@ export default {
         v-for="(row, rowIndex) in rows"
         :key="`row-${rowIndex}`"
         class="
+          text-xs md:text-base
           hover:bg-gray-50
           md:space-y-3
           space-y-4
@@ -114,7 +119,7 @@ export default {
           v-for="(column, colIndex) in columns"
           :key="getColumnKey(column, colIndex, rowIndex, row)"
           @click.stop="$emit('click', { row, column })"
-          class="h-16"
+          class="h-14 md:h-16"
           :class="getColumnClass(column, row)"
         >
           <!-- A slot for the consumer to decide whether he overwrite a specific column or not-->

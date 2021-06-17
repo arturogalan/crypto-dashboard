@@ -10,7 +10,7 @@
   }
 </script>
 <template>
-  <div class="flex items-center justify-center w-full">
+  <div class="flex items-center w-full ml-2">
     <label for="toggleB" class="flex items-center cursor-pointer">
       <div class="mr-3 text-green-400 font-medium text-sm whitespace-nowrap">
         {{ label }}

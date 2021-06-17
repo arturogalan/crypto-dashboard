@@ -72,6 +72,7 @@ export default {
               },
             },
           },
+          maintainAspectRatio: false,
         },
       }
     }
@@ -81,12 +82,14 @@ export default {
 <template>
 <div class="flex items-center justify-center px-4">
   <div class="max-w-4xl bg-white w-full rounded-lg shadow-xl">
-  <div>
+  <div class="currency-chart">
     <vue3-chart-js
+      ref="myChart"
       :id="lineChart.id"
       :type="lineChart.type"
       :data="lineChart.data"
       :options="lineChart.options"
+      class="h-96 max-w-screen-xl"
     ></vue3-chart-js>
   </div>
   </div>
@@ -94,5 +97,9 @@ export default {
   </div>
 
 </template>
-
+<style scoped>
+  .currency-chart {
+    min-height: 60vh;
+  }
+</style>
 

@@ -14,7 +14,7 @@
 <template>
 <div class="flex flex-col h-screen bg-white dark:bg-gray-400">
   <base-header/>
-  <main class="flex-1 overflow-y-auto p-5">
+  <main class="flex-1 overflow-y-auto p-1 md:p-5">
     <router-view/>
     <base-footer/>
   </main>

@@ -27,7 +27,7 @@ export default {
 <template>
   <div
     href="#"
-    class="text-xl cursor-pointer"
+    class="text-xl cursor-pointer flex items-center"
     title="Toggle theme between light and dark"
     aria-label="Toggle theme between light and dark"
     @click.prevent="toggleTheme"

@@ -96,7 +96,7 @@ export default {
 
 <template>
   <div class="flex content-between justify-between mb-5">
-    <div  class="w-auto text-left ml-8">
+    <div class="w-auto text-left ml-8 whitespace-nowrap">
       {{ cyptoListedText }}
     </div>
     <div

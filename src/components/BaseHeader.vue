@@ -17,6 +17,9 @@
         isRealTimeActive: false,
       }
     },
+    mounted () {
+      this.toggleRealTime();
+    },
     methods: {
     ...mapActions(cryptoStore, ['startPeriodicFetchCryptoList', 'cancelPeriodicFetchCryptoList']),
 

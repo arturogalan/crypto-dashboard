@@ -18,7 +18,7 @@
       <!-- toggle -->
       <div class="relative">
         <!-- input -->
-        <input @click.stop="$emit('toggle')" type="checkbox" id="toggleB" class="sr-only">
+        <input @click.stop="$emit('toggle')" type="checkbox" id="toggleB" class="sr-only" checked>
         <!-- line -->
         <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
         <!-- dot -->

@@ -3,6 +3,14 @@
 A cryptocurrencies dashboard example project, deployed in netlify:
 ## <a href="https://bot-coin.netlify.app/" target="_blank">bot-coin.netlify.app</a>  
   
+### Main dashboard
+
+![main dashboard](https://github.com/arturogalan/crypto-dashboard/blob/main/src/assets/sc1.png?raw=true)
+
+### Crypto detail
+
+![crypto detail](https://github.com/arturogalan/crypto-dashboard/blob/main/src/assets/sc2.png?raw=true)
+ 
 
 ### 1. Install the project (npm is required)
 

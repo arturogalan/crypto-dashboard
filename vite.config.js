@@ -11,5 +11,8 @@ export default defineConfig({
         families: ['Nunito', 'Press Start 2P']
       },
     })    
-  ]
+  ],
+  define: {
+    'process.env.COINCAP_API_KEY': JSON.stringify(process.env.COINCAP_API_KEY),
+  }
 })

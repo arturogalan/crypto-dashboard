@@ -12,6 +12,8 @@ export function fetchCryptoVariants() {
       mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
+        'Accept-Encoding': 'gzip',
+        'Authorization': `Bearer ${process.env.COINCAP_API_KEY}`,
       },
     }).then(({data})=> data);
 };
@@ -27,6 +29,8 @@ export function fetchCryptoHistory({currencyId, selectedInterval}) {
       mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json; charset=utf-8',
+        'Accept-Encoding': 'gzip',
+        'Authorization': `Bearer ${process.env.COINCAP_API_KEY}`,
       },
     }).then(({data})=> data);
 };
